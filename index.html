@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pastelaria Idle — 27/11 na Steam</title>
+<meta name="description" content="Simulador de pastelaria em primeira pessoa com co-op para até 10 amigos. Lançamento 27 de novembro, na Black Friday.">
+<meta property="og:title" content="Pastelaria Idle — 27/11 na Steam">
+<meta property="og:description" content="Abra a massa, recheie, frite e sirva. Co-op com até 10 amigos.">
+<meta property="og:image" content="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/5499310/16aa6725621fde41b71039ad7857885134f06f14/header.jpg">
+<style>
+  :root{--bg:#140c07;--card:#21140c;--gold:#ffcd3c;--cream:#fff4dc;--steam:#66c0f4;--ink:#180e08;--muted:#d9c3a3}
+  *{box-sizing:border-box;margin:0}
+  body{background:radial-gradient(ellipse at 50% 0%,#3a210f 0%,var(--bg) 60%);color:var(--cream);font:16px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;min-height:100vh;display:flex;justify-content:center}
+  main{width:100%;max-width:560px;padding:20px 16px 40px;text-align:center}
+  .cap{width:100%;border-radius:14px;box-shadow:0 10px 40px #0008}
+  h1{font-size:28px;margin:18px 0 6px;letter-spacing:.3px}
+  .date{display:inline-block;background:var(--gold);color:var(--ink);font-weight:800;padding:6px 14px;border-radius:10px;font-size:20px;margin:6px 0 4px}
+  p.sub{color:var(--muted);margin:6px 0 18px}
+  .btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:18px 16px;border-radius:14px;font-weight:800;font-size:20px;text-decoration:none;border:0;cursor:pointer}
+  .primary{background:var(--steam);color:#06223a;box-shadow:0 6px 24px #66c0f455}
+  .primary:hover{filter:brightness(1.08)}
+  .secondary{background:transparent;color:var(--cream);border:2px solid #ffffff33;font-size:16px;margin-top:10px;padding:14px}
+  .hint{font-size:14px;color:var(--muted);margin-top:10px}
+  video{width:100%;max-width:340px;border-radius:14px;margin:22px auto 10px;display:block}
+  ul{list-style:none;padding:0;margin:14px 0 0;text-align:left;display:grid;gap:8px}
+  li{background:var(--card);border-radius:10px;padding:10px 12px}
+  li b{color:var(--gold)}
+  .mobile{display:none;background:var(--card);border:1px solid #ffffff22;border-radius:12px;padding:12px;margin-top:12px;font-size:15px}
+  footer{margin-top:26px;font-size:12px;color:#ffffff66}
+</style>
+</head>
+<body>
+<main>
+  <img class="cap" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/5499310/16aa6725621fde41b71039ad7857885134f06f14/header.jpg" alt="Pastelaria Idle">
+  <h1 id="t">Sua pastelaria, suas regras</h1>
+  <div class="date" id="d">27 DE NOVEMBRO · BLACK FRIDAY</div>
+  <p class="sub" id="s">Coloque na lista de desejos para ser avisado no lançamento.</p>
+
+  <a class="btn primary" id="openApp" href="#">
+    <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="#06223a" stroke-width="2.4"/><circle cx="12" cy="12" r="3.2" fill="#06223a"/></svg>
+    <span id="b1">Abrir na Steam e adicionar à lista</span>
+  </a>
+  <a class="btn secondary" id="openWeb" href="#"><span id="b2">Não tenho a Steam instalada: abrir no navegador</span></a>
+  <p class="hint" id="h">O botão azul abre o aplicativo da Steam, onde você já está logado.</p>
+  <div class="mobile" id="m">📱 Está no celular? Abra a página e, se não estiver logado, salve para adicionar à lista quando estiver no PC.</div>
+
+  <img class="cap" style="margin-top:22px" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/5499310/ffb1e656b5611a893c72901fc45bd05f5b64ff1e/ss_ffb1e656b5611a893c72901fc45bd05f5b64ff1e.1920x1080.jpg" alt="">
+  <img class="cap" style="margin-top:10px" src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/5499310/2d32d266d652bbc677f065f8f63e5ac2459c3b5e/ss_2d32d266d652bbc677f065f8f63e5ac2459c3b5e.1920x1080.jpg" alt="">
+  <ul>
+    <li id="f1">🥟 <b>Você faz cada pastel</b> com as próprias mãos: massa, recheio, garfo e óleo.</li>
+    <li id="f2">🏪 <b>Monte e decore</b> a sua pastelaria e contrate equipe.</li>
+    <li id="f3">👥 <b>Co-op online</b> com até 10 amigos na mesma rua.</li>
+  </ul>
+  <footer>Pastelaria Idle · BongoShiny</footer>
+</main>
+<script>
+  // repassa os parâmetros UTM do anúncio para a loja da Steam (para medir no relatório UTM)
+  var q = location.search || '';
+  if (!/utm_source/.test(q)) q = '?utm_source=site&utm_medium=landing&utm_campaign=bf';
+  var store = 'https://store.steampowered.com/app/5499310/Pastelaria_Idle/' + q;
+  document.getElementById('openWeb').href = store;
+  var appLink = 'steam://openurl/' + store;
+  var a = document.getElementById('openApp');
+  a.href = appLink;
+  a.addEventListener('click', function(){
+    // se a Steam não abrir em ~2,5s, cai para o navegador
+    var t = setTimeout(function(){ if (!document.hidden) location.href = store; }, 2500);
+    window.addEventListener('blur', function(){ clearTimeout(t); }, {once:true});
+  });
+  var mobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  if (mobile) { document.getElementById('m').style.display = 'block'; a.href = store; }
+
+  var L = (navigator.language || 'pt').slice(0,2);
+  var T = {
+    es: {t:'Tu pastelería, tus reglas', d:'27 DE NOVIEMBRE · BLACK FRIDAY', s:'Agrégalo a tu lista de deseados para enterarte del lanzamiento.', b1:'Abrir en Steam y agregar a la lista', b2:'No tengo Steam instalado: abrir en el navegador', h:'El botón azul abre la aplicación de Steam, donde ya tienes la sesión iniciada.', m:'📱 ¿Estás en el móvil? Abre la página y, si no has iniciado sesión, guárdala para agregarla desde el PC.', f1:'🥟 <b>Haces cada pastel</b> con tus propias manos: masa, relleno, tenedor y aceite.', f2:'🏪 <b>Arma y decora</b> tu pastelería y contrata personal.', f3:'👥 <b>Co-op online</b> con hasta 10 amigos en la misma calle.'},
+    en: {t:'Your pastry shop, your rules', d:'NOVEMBER 27 · BLACK FRIDAY', s:'Wishlist it to get notified at launch.', b1:'Open in Steam and wishlist', b2:"I don't have Steam installed: open in browser", h:'The blue button opens the Steam app, where you are already logged in.', m:"📱 On your phone? Open the page and, if you're not logged in, save it to wishlist from your PC.", f1:'🥟 <b>Make every pastel</b> by hand: dough, filling, fork and hot oil.', f2:'🏪 <b>Build and decorate</b> your shop and hire staff.', f3:'👥 <b>Online co-op</b> with up to 10 friends on the same street.'}
+  };
+  if (T[L]) { document.documentElement.lang = L; for (var k in T[L]) { var el = document.getElementById(k); if (el) el.innerHTML = T[L][k]; } document.title = 'Pastelaria Idle — Steam'; }
+</script>
+</body>
+</html>
