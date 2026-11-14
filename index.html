@@ -77,6 +77,16 @@
     en: {t:'Your pastry shop, your rules', d:'NOVEMBER 27 · BLACK FRIDAY', s:'Wishlist it to get notified at launch.', b1:'Open in Steam and wishlist', b2:"I don't have Steam installed: open in browser", h:'The blue button opens the Steam app, where you are already logged in.', m:"📱 On your phone? Open the page and, if you're not logged in, save it to wishlist from your PC.", f1:'🥟 <b>Make every pastel</b> by hand: dough, filling, fork and hot oil.', f2:'🏪 <b>Build and decorate</b> your shop and hire staff.', f3:'👥 <b>Online co-op</b> with up to 10 friends on the same street.'}
   };
   if (T[L]) { document.documentElement.lang = L; for (var k in T[L]) { var el = document.getElementById(k); if (el) el.innerHTML = T[L][k]; } document.title = 'Pastelaria Idle — Steam'; }
+  // a partir do lançamento (27/11, 15h de Brasília) a página troca "lista de desejos" por "já disponível"
+  if (Date.now() >= Date.UTC(2026, 10, 27, 18, 0)) {
+    var LT = {
+      pt: {t:'Já saiu na Steam!', d:'BLACK FRIDAY · JÁ DISPONÍVEL', s:'Abra sua pastelaria agora, sozinho ou com até 10 amigos.', b1:'Abrir na Steam e jogar', h:'O botão azul abre o aplicativo da Steam, onde você já está logado.'},
+      es: {t:'¡Ya salió en Steam!', d:'BLACK FRIDAY · YA DISPONIBLE', s:'Abre tu pastelería ahora, solo o con hasta 10 amigos.', b1:'Abrir en Steam y jugar', h:'El botón azul abre la aplicación de Steam, donde ya tienes la sesión iniciada.'},
+      en: {t:'Out now on Steam!', d:'BLACK FRIDAY · OUT NOW', s:'Open your pastry shop now, solo or with up to 10 friends.', b1:'Open in Steam and play', h:'The blue button opens the Steam app, where you are already logged in.'}
+    };
+    var X = LT[T[L] ? L : 'pt'];
+    for (var j in X) { var e2 = document.getElementById(j); if (e2) e2.innerHTML = X[j]; }
+  }
 </script>
 </body>
 </html>
